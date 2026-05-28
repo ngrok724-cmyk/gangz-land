@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>گَنـــگز لَـــنــد</title>
+</head>
+<body>
+    <!-- header -->
+    <header>
+
+        <div id="header">
+            <div class="brand">
+              <div class="logo"></div>
+              <div class="title">گَنـــگز لَـــنــد</div>
+            </div>
+            <div class="slogan">حال خوبت با من  :)</div>
+            <ul class="navbar-list">
+                <li id="item">
+                    <a href="javascript:void(0)" class="nav-list">منؤ ما <span class="arrow-icon">></span></a>
+                    <ul class="sub-menu">
+                        <li><a href="#cake" class="sub-menu-items">کیک ها</a></li>
+                        <li><a href="#drink-cold" class="sub-menu-items">نوشیدنی های سرد</a></li>
+                        <li><a href="#drink-hot" class="sub-menu-items">نوشیدنی های گرم</a></li>
+                    </ul>
+                </li>
+                <li><a href="#footer" class="nav-list about">درباره ما</a></li>
+            </ul>
+        </div>
+
+    </header> 
+
+
+    <!-- main -->
+    <main class="main">
+        <button type="button" class="contact"><a href="javascript:void(0)" class="contact contact-link" >🎧</a></button>
+        <div>
+            <h3 id="drink-cold" class="sub-item">نوشیدنی های سرد</h3>
+            <div class="box-foods">
+                <section class="box-food ab""> 
+                    <section class="box-price ab-price" style="background: rgba(0, 0, 0, 0.403); border-radius: 10px; width: 100%;">
+                        <h5 class="name-food" style="border: none;">آب معدنی</h5>
+                        <h4 class="price">قیمت : </h4>
+                        <h5 class="money"><del>30,000</del> 25,000</h5>
+                        <h5 class="toman">تومان</h5>
+                    </section>
+                    
+                    <button type="button" class="like-btn">❤ </button>
+                </section>
+                <section class="box-food mohito">
+                    <section class="box-price" style="background: rgba(0, 0, 0, 0.403); border-radius: 10px; width: 100%;">
+                        <h5 class="name-food">موهیتو</h5>
+                        <h4 class="price">قیمت : </h4>
+                        <h5 class="money">270,000</h5>
+                        <h5 class="toman">تومان</h5>
+                    </section>
+                    <!-- <button type="button" class="like-btn">❤</button> -->
+                </section>
+            </div>
+            <h3 id="drink-hot" class="sub-item hot">نوشیدنی های گرم</h3>
+            <div class="box-foods">
+                <section class="box-food cha"> 
+                    <section class="box-price">
+                        <h5 class="name-food" style="border: none;">چای</h5>
+                        <h5 class="money" style="font-size: 1.2rem;">(رایگان)</h5>
+                    </section>
+                    
+                    <!-- <button type="button" class="like-btn">❤ </button> -->
+                </section>
+                <section class="box-food sperso">
+                    <section class="box-price">
+                        <h5 class="name-food">اسپرسو 50/50</h5>
+                        <h4 class="price">قیمت : </h4>
+                        <h5 class="money">70,000</h5>
+                        <h5 class="toman">تومان</h5>
+                    </section>
+                    <!-- <button type="button" class="like-btn">❤</button> -->
+                </section>
+            </div>
+            <h3 id="cake" class="sub-item" style="border-color: rgb(188, 188, 188);">کیک ها</h3>
+            <div class="box-foods">
+                <section class="box-food ha">
+                    <section class="box-price">
+                        <h5 class="name-food">کیک هویج</h5>
+                        <h4 class="price">قیمت : </h4>
+                        <h5 class="money">80,000</h5>
+                        <h5 class="toman">تومان</h5>
+                    </section>
+                </section>
+            </div>
+    </main>
+    <!-- footer -->
+    <footer id="footer">
+        <a href="#top" class="back-to-top" onclick="scrollToTop()" title="بازگشت به بالا">⬆</a>
+        <h2 id="team">ما کی هستیم ؟ 🧐</h2>
+        <div class="footer-content">
+            <p id="pragraph"> ما یک تیم هستیم با انفجاری از طـــــعــــم و لــــــذت   <span class="food-footer">(غذا + سرگرمی)</span> , تیم ما متشکل از افراد خبره و با تجربه است و    به فکر شادی شما عزیزان است . </p>
+            <div class="box-img">
+                <!-- محفظه عکس‌های متغیر -->
+                <img src="./photos/کیک-هویج-515645615145120.webp" alt="Cafe" class="slide-img active">
+                <img src="./photos/sp.jfif" alt="Cafe" class="slide-img">
+                <img src="./photos/fast-tiramisu-recipe.jpg" alt="Cafe" class="slide-img">
+            </div>
+        </div>
+        <p class="footer-text">حال خوبت با من | گَنـــگز لَـــنــد</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.box-foods').forEach(slider => {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+                
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.style.cursor = 'grabbing';
+                slider.style.scrollBehavior = 'auto'; // غیرفعال کردن موقت انیمیشن برای روانی حرکت ماوس
+                
+                // اصلاح محاسبات برای جهت RTL
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+        
+            slider.addEventListener('mouseleave', () => {
+                isDown = false;
+                slider.style.cursor = 'grab';
+            });
+        
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+                slider.style.cursor = 'grab';
+                slider.style.scrollBehavior = 'smooth'; // بازگشت به حالت نرم بعد از رها کردن
+            });
+        
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2; // سرعت حرکت (عدد 2 را می‌توانید کم و زیاد کنید)
+                
+                // اعمال حرکت (بدون فریز شدن در هر دو جهت)
+                slider.scrollLeft = scrollLeft - walk;
+            });
+        });
+        
+        
+        
+        function adjustCardLayout() {
+            const containers = document.querySelectorAll('.box-foods');
+            
+            containers.forEach(container => {
+                // چک میکنیم که آیا عرض محتوا از عرض کانتینر بیشتر است
+                if (container.scrollWidth > container.clientWidth) {
+                    // اگر بیشتر بود، چیدمان را از راست (flex-start) ست میکنیم
+                    container.style.justifyContent = 'flex-start';
+                } else {
+                    // اگر کمتر بود، در وسط نمایش میدهیم
+                    container.style.justifyContent = 'center';
+                }
+            });
+        }
+        
+        // فراخوانی تابع در لحظه بارگذاری و تغییر اندازه صفحه
+        window.addEventListener('load', adjustCardLayout);
+        window.addEventListener('resize', adjustCardLayout);
+
+        //عکس ها 
+
+        function startFooterSlider() {
+            const images = document.querySelectorAll('.slide-img');
+            let currentIndex = 0;
+
+            // اگر عکسی وجود نداشت تابع متوقف شود
+            if (images.length === 0) return;
+
+            setInterval(() => {
+                // حذف کلاس active از عکس فعلی
+                images[currentIndex].classList.remove('active');
+            
+                // محاسبه ایندکس عکس بعدی (حلقه بی‌نهایت)
+                currentIndex = (currentIndex + 1) % images.length;
+            
+                // اضافه کردن کلاس active به عکس جدید
+                images[currentIndex].classList.add('active');
+            }, 2000); // هر 2000 میلی‌ثانیه (2 ثانیه)
+        }
+
+        // اجرای تابع پس از لود شدن صفحه
+        document.addEventListener('DOMContentLoaded', startFooterSlider);
+
+        // پشتیبانی
+
+        // تعریف یک متغیر برای جلوگیری از کلیک‌های همزمان
+        let isProcessingClick = false;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // انتخاب تمام دکمه‌های تماس (حتی اگر چندتا باشند)
+            const contactLinks = document.querySelectorAll('.contact-link, .contact');
+        
+            contactLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    // اگر در حال پردازش کلیک قبلی هستیم، بقیه را نادیده بگیر
+                    if (isProcessingClick) {
+                        e.preventDefault();
+                        return;
+                    }
+                
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+
+                    isProcessingClick = true; // قفل کردن
+                
+                    const smsLink = 'sms:09203235606';
+                    const rubikaLink = 'https://rubika.ir/GuardEx';
+                
+                    // تشخیص موبایل
+                    const isMobile = /Android|iPhone|iPad|iPod|Mobile|Tablet/i.test(navigator.userAgent);
+                
+                    setTimeout(() => {
+                        if (isMobile) {
+                            window.location.href = smsLink;
+                        } else {
+                            window.open(rubikaLink, '_blank');
+                        }
+
+                        // بعد از انجام کار، قفل را باز کن
+                        setTimeout(() => { isProcessingClick = false; }, 1000);
+                    }, 1200);
+                }, true);
+            });
+        });
+
+
+    </script>
+
+</body>
+</html>
