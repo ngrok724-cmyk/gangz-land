@@ -1,0 +1,1045 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    user-select: none;
+}
+
+body{
+    background: linear-gradient(45deg, rgba(0,0,0,0.9), transparent)no-repeat;
+}
+
+html{
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style-type: none;
+}
+
+img{
+    width: 100%;
+}
+/* header */ /* index */
+
+#header{
+    background: #f3f3f3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    width: 90%;
+    margin: auto;
+    border-radius: 50px;
+    border: 1px solid lightgray;
+    box-shadow: 0 0 8px 0 black;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top:0.3rem;
+    z-index: 99;
+}
+.brand{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* فاصله بین لوگو و اسم سایت */
+}
+.navbar-list{
+    display: flex;
+    gap: 2.5rem;
+}
+.title{
+    font-size: 1.8rem;
+    background: linear-gradient(45deg, purple, rgb(226, 0, 226));
+    background-clip: text;
+    color: transparent;
+}
+
+
+
+.slogan{
+    /* margin-right: 7rem; */
+    font-size: 1.15rem;
+    background: linear-gradient(45deg,  rgb(175, 211, 226), blue);
+    background-clip: text;
+    color: transparent;
+}
+
+
+.about {
+    position: relative; /* بسیار مهم: برای اینکه خط زیر متن باشد */
+    text-decoration: none;
+    color: #fff; /* رنگ متن لینک */
+    padding-bottom: 5px; /* فاصله متن تا خط */
+    display: inline-block;
+}
+
+.about::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0; /* شروع از سمت راست */
+    width: 0; /* در حالت عادی عرض 0 است */
+    height: 2px; /* ضخامت خط */
+    background-color: #000; /* رنگ خط */
+    transition: width 0.3s ease-out; /* انیمیشن نرم */
+}
+
+/* هنگام هاور شدن */
+.about:hover::after {
+    width: 100%; /* در هنگام هاور عرض به 100 درصد می‌رسد */
+}
+
+/* تنظیمات پایه برای آیکون فلش */
+.arrow-icon {
+    display: inline-block; /* برای اینکه ترنسفورم کار کند */
+    transition: transform 0.2s ease; /* انیمیشن نرم */
+    margin-right: 5px; /* فاصله از متن */
+}
+
+/* چرخش فلش */
+#header .navbar-list #item {
+    position: relative;
+}
+
+#header .navbar-list #item .arrow-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* وقتی هاور شد */
+#header .navbar-list #item:focus-within .arrow-icon {
+    transform: rotate(-90deg);
+}
+
+/* اگر submenu با opacity باز باشد، فلش همچنان پایین بماند */
+#header .navbar-list #item:focus-within .sub-menu,
+#header .navbar-list #item .sub-menu:focus-within {
+    display: block;
+    opacity: 1;
+}
+
+#header .navbar-list #item:focus-within .arrow-icon,
+#header .navbar-list #item .sub-menu:focus-within ~ .nav-list .arrow-icon {
+    transform: rotate(-90deg);
+}
+
+/* sub-menu */
+
+#header .navbar-list .sub-menu{
+    background: rgba(178, 0, 178, 0.69);
+    color: #fff;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    border: 2px solid purple;
+    display: none;
+}
+
+#header .navbar-list .sub-menu li a{
+    display: block;
+    padding: 0.3rem;
+    border-radius: 10px;
+}
+/* show sub-menu */
+#header .navbar-list #item:focus-within .sub-menu{
+    display: block;
+}
+#header .navbar-list > li{
+    padding: 15px 0;
+}
+#header .navbar-list #item{
+    position: relative;
+}
+.nav-list{
+    color: black;
+    font-size: 1.3rem;
+    padding: 3px 10px 3px 10px;
+    transition: all 0.2s;
+    border-radius: 10px 0 10px 0;
+}
+
+.logo{
+    background: conic-gradient(purple, rgb(226, 0, 226));
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.sub-menu-items{
+    color:#fff;
+}
+
+/* main */
+.main{
+    margin-top: 8rem;
+}
+.box-foods{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.box-foods::-webkit-scrollbar {
+    display: none; /* برای کروم و سایدبار */
+}
+.box-food{
+    flex: 0 0 280px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8f8;
+    width: 25%;
+    height: 100%;
+    padding: 25px 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: 0 0 9px 0 rgb(48, 48, 48);
+    position: relative;
+}
+.box-price{
+    text-align: center;
+    margin-top: 11rem;
+    background: rgba(0, 0, 0, 0.403); 
+    border-radius: 10px; 
+    width: 100%;
+}
+.name-food{
+    padding-top: 10px;
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+}
+
+.price{
+    display: inline;
+    font-size: 1.2rem;
+}
+
+.money{
+    display: inline;
+    padding-bottom: 4px;
+    font-size: 1.04rem;
+}
+.toman{
+    display: inline;
+    font-size: 0.9rem;
+}
+
+.name-food, .price, .money, .toman{
+    color:#fff;
+}
+
+.like-btn{
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    border: none;
+    color: white;
+    background:rgba(146, 146, 146, 0.34);
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    transition: all 0.3s;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    fill: none;
+}
+.hot{
+    border-bottom: 1px solid;
+    border-image: linear-gradient(45deg, black, white) 1;
+}
+
+/* کانتینر اصلی کارت‌ها */
+.box-foods {
+    display: flex !important;
+    direction: rtl !important;
+    gap: 20px !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    transition: all 0.3s ease;
+    
+    /* تنظیمات اسکرول */
+    overflow-x: auto !important;
+    scrollbar-width: none; /* برای فایرفاکس */
+    -ms-overflow-style: none; /* برای IE */
+}
+
+/* حذف نوار اسکرول در کروم و سافاری */
+.box-foods::-webkit-scrollbar {
+    display: none;
+}
+
+.contact{
+    font-size: 2rem;
+    background: rgba(223, 0, 223, 0.403);
+    width: 65px;
+    height: 65px;
+    text-align: center;
+    padding: 7px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 30px;      /* فاصله از پایین */
+    left: 30px;        /* فاصله از سمت چپ */
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 9999;     /* قرارگیری روی تمام المان‌ها */
+    transition: all 0.3s ease;
+    direction: rtl;
+    border: none;
+}
+/* sub-menu recuest */
+.sub-item{
+    text-align: center;
+    scroll-margin-top: 120px;
+    border-bottom: 2px solid gray;
+    padding-bottom: 10px;
+    width: 20%;
+    margin: 25px auto;
+}
+
+/* footer */
+
+#footer{
+    margin-top: 16.24rem;
+    background: linear-gradient(120deg, purple, rgb(226, 0, 226));
+    padding: 1rem 1.49rem 2rem 2rem;
+    color: #fff;
+    position: relative;
+}
+.back-to-top{
+    background: purple;
+    color: #fff;
+    padding: 0.6rem 0.9rem;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;           /* چسبیدن به بالای فوتر */
+    left: 98%;        /* قرارگیری در وسط عرض */
+    transform: translate(-50%, -50%); /*انتقال به مرکز لبه (۵۰٪ ارتفاع خودش به بالا)*/
+    transition: all 0.2s;
+}
+#team{
+    margin-top: 20px;
+}
+#pragraph{
+    margin-right: 2rem;
+    margin-top: 0.8rem;
+    font-size: 1.03rem;
+}
+.food-footer{
+    color : rgb(205, 224, 233);
+}
+
+.footer-text{
+    text-align: center;
+    margin-top: 5rem;
+}
+/* action */
+
+#header .navbar-list .sub-menu li a:hover{
+    background: rgba(246, 0, 246, 0.576)
+}
+
+.nav-list:focus-within .arrow-icon {
+    transform: rotate(-90deg); /* چرخش ۹۰ درجه برای تبدیل به فلش رو به پایین */
+}
+
+.back-to-top:active{
+    scale: 0.95;
+    transition: all 0.2s;
+}
+
+.like-btn:hover{
+    background: rgba(0, 0, 0, 0.391);
+    scale: 1.1;
+    top: 0.6rem;
+    right: 0.6rem;
+}
+
+.like-btn:active{
+    scale: 0.9;
+    color: rgb(252, 59, 59);
+}
+
+.box-food:hover .like-btn{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.contact:hover {
+    background-color: purple;
+}
+.contact::after{
+    content: 'همیشه هستم';
+    position: absolute;
+    font-size: 1rem;
+    background: rgba(146, 0, 146, 0.471);
+    padding: 6px 10px;
+    border-radius: 10px;
+    bottom: 100%;
+    white-space: nowrap;
+    left: 20%;
+    border-left: 2px solid rgba(129, 0, 129, 0.987);
+    opacity: 0;
+    transition: all 0.3s;
+    cursor: auto;
+}
+.contact:hover::after{
+    opacity: 1;
+    bottom: 120%;
+}
+
+/* footer-img */
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap; /* برای نمایش درست در موبایل */
+}
+
+.box-img {
+    position: relative;
+    width: 200px; /* اندازه دلخواه */
+    height: 150px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.slide-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; /* در حالت عادی مخفی */
+    transition: opacity 0.8s ease-in-out; /* انیمیشن نرم محو شدن */
+}
+
+.slide-img.active {
+    opacity: 1; /* فقط عکس فعال دیده شود */
+}
+
+
+/* photo */
+/* cold */
+.ab{
+    background: url(./photos/a.webp) no-repeat, #fff;
+    background-size: contain;
+    background-position: 0 10px;
+}
+.mohito{
+    background: url(./photos/m.jfif) no-repeat;
+    background-size: cover;
+    background-position: -20px 0;
+}
+/* hot */
+.cha{
+    background: url(./photos/ch.jfif) no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+}
+.sperso{
+    background: url(./photos/sp.jfif) no-repeat;
+    background-size: cover;
+    background-position: -150px 0;
+}
+/* cake */
+.ha{
+    background: url(./photos/کیک-هویج-515645615145120.webp) no-repeat;
+    background-size: cover;
+}
+
+/* form */
+
+form{
+    position: relative;
+    width: 25rem;
+    border-radius: 10px;
+    background: linear-gradient(45deg, pink , purple);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    color:#fff;
+    padding: 5rem 0.6rem 0.6rem 0.6rem;
+}
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    right: 50%;
+    top: -20%;
+    transform: translateX(50%);
+    background: conic-gradient(purple, pink);
+}
+form .input-group{
+    position: relative;
+}
+form .input-group input{
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1.8rem;
+    padding: 0.6rem;
+    font-size: 1.06rem;
+}
+form .input-group .phone{
+    position: absolute;
+    font-size: 1.1rem;
+    top: 0.7rem;
+    right: 0.6rem;
+    transition: all .3s ease;
+    pointer-events: none;
+}
+
+form .input-group .pass{
+    position: absolute;
+    font-size: 1.1rem;
+    top:4.9rem;
+    right: .6rem;
+    transition: all .3 ease;
+    pointer-events: none;
+}
+
+form .input-group input:focus+.phone,
+form .input-group input:valid+.phone{
+    transform: scale(0.9) translateY(-25px);
+    color: #000;
+}
+
+form .input-group input:focus+.pass,
+form .input-group input:valid+.pass{
+    transform: scale(.9) translateY(-25px);
+    color: #000;
+} 
+
+form input[type=submit]{
+    border: none;
+    outline: none;
+    background: #f67aff87;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: block;
+    margin:5% auto;
+    margin-top: 10%;
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+form input[type=submit]:active{
+    transform: scale(.8);
+}
+form input[type=submit]:hover{
+    background: #ab55b187;
+    color: #fff;
+}
+/* ریسپانسیو */
+
+
+
+/* تبلت (عرض بین 577px تا 992px) */
+@media (max-width: 992px) {
+    .box-foods {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .box-food {
+        width: 45%;
+    }
+    #header {
+        width: 90%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px 10px 2px;
+    }
+    .slogan{
+        margin: 0;
+    }
+    .back-to-top{
+        left: 95%;
+    }
+}
+
+
+/* لپ‌تاپ‌های معمولی و بزرگ (بالای 993px) */
+@media (min-width: 993px) {
+    /* محدود کردن عرض کلی برای جلوگیری از پخش شدن بیش از حد عناصر */
+
+    #footer{
+        margin-top: 18.7rem;
+    }
+
+    #header {
+        width: 80%;
+    }
+
+    .box-food {
+        width: 22%;
+    }
+    .back-to-top{
+        left: 97%;
+    }
+}
+
+/* نمایشگرهای عریض (Ultra-wide / دسکتاپ‌های بزرگ) */
+@media (min-width: 1440px) {
+    html {
+        font-size: 18px;
+    }
+    
+    .box-foods{
+        justify-content: center;
+        gap: 40px;
+    }
+}
+
+/* موبایل (عرض تا 576px) */
+
+@media (max-width: 576px) {
+    #header{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 50%;
+        padding: 10px 15px 10px 2px;
+    }
+    #header ul li a {
+        font-size: 0.8rem; /* کوچک کردن لینک‌های منو */
+        padding: 4px 6px;
+    }
+    .brand{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem; /* هیچ فاصله‌ای بین لوگو و اسم سایت نباشد */
+    }
+
+    .logo{
+        width: 35px;
+        height: 35px;
+        margin-right: 0;
+    }
+
+    .title{
+        font-size: 1.2rem;
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    ul{
+        gap: 0.1rem;
+        margin-top: 0;
+    }
+
+    .box-food {
+        width: 40%;
+        margin: 0 auto;
+    }
+
+    .box-foods {
+        flex-direction: row;
+        gap: 1.2rem;
+        margin-top: 30px;
+        
+    }
+
+    #footer {
+        margin-top: 24.87rem;
+    }
+
+    .nav-list {
+        font-size: 1rem;
+    }
+    .slogan{
+        margin: 0;
+        font-size: 1rem;
+    }
+    .nav-list:hover{
+        border-right:none;
+        transition: none;
+        background: none;
+    }
+    #pragraph{
+        line-height: 1.8rem;
+    }
+
+    .back-to-top{
+        left: 95%;
+    }
+
+    .contact {
+        padding: 12px;
+        bottom: 20px;
+        left: 20px;
+    }
+    .contact:hover{
+        scale: 1;
+        background-color: rgba(223, 0, 223, 0.403);
+        color: #fff;
+    }
+}
+
+@media (max-width: 651px){
+    .slogan{
+        margin: 0.5rem 0.4rem;
+    }
+    .nav-list{
+
+        padding: 0.2rem 0.5rem;
+    }
+    #header{
+        padding: 0.8rem 0.2rem 0.2rem 1.1rem;
+        width: 94%;
+    }
+
+    .nav-list:hover{
+        border-right:none;
+        transition: none;
+        background: none;
+    }
+    #footer{
+        margin-top: 20.87rem;
+    }
+    .back-to-top{
+        left: 94%;
+    }
+}
+
+@media (max-width: 628px) {
+    #header {
+        height: 20%; /* اجازه می‌دهد ارتفاع هدر بر اساس محتوا زیاد شود */
+        flex-direction: column !important; /* المان‌ها را زیر هم می‌چیند */
+        padding: 2px 0 !important;
+    }
+
+    /* بخش دوم: نوبار (منو) */
+    #header .navbar-list {
+        width: 100%;
+        margin-top: -30px;
+    }
+
+    #header ul li a {
+        font-size: 14px !important; /* کمی کوچک‌تر برای جلوگیری از شکستن خط */
+    }
+
+    #header h1 {
+        font-size: 18px !important;
+    }
+
+    #header ul li .home {
+        display: none !important;
+
+    }
+    .slogan{
+        font-size: 0.7rem;
+        margin-top: -30px;
+    }
+    .title{
+        font-size: 1.1rem;
+    }
+    #header .navbar-list .sub-menu{
+        width: 150px;
+    }
+    .sub-item{
+        width: 50%;
+    }
+    .price, .money, .toman{
+        font-size: 0.7rem;
+    }
+    .money{
+        border: none;
+    }
+    .box-food{
+        height: 300px;
+    }
+    .ab-price{
+        margin-top: 13rem;
+    }
+    .ab{
+        background-position: -0.1rem 2rem;
+        padding: 3px;
+    }
+    .mohito{
+        background-position: -60px 0;
+    }
+    .cha{
+        background-position: -45px 0;
+    }
+    .sperso{
+        background-position: -200px 0;
+    }
+    .ha{
+        background-position: -80px 0;
+    }
+}
+@media (max-width: 576px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+@media (max-width: 628px) {
+    #header {
+        width: 95% !important;
+        height: 10%;
+        padding: 6px 10px !important;
+        border-radius: 20px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 1px !important;
+    }
+
+    .brand {
+        display: flex !important;
+        align-items: center !important;
+        gap: 2px !important;
+        flex-shrink: 0;
+        min-width: 0;
+    }
+
+    .logo {
+        width: 30px !important;
+        height: 30px !important;
+        flex-shrink: 0;
+    }
+
+    .title {
+        font-size: 0.9rem !important;
+        margin-left: 20px;
+    }
+
+    .navbar-list {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 1px !important;
+        flex-wrap: nowrap !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        flex-shrink: 0;
+    }
+
+    #header .navbar-list > li {
+        padding: 0 !important;
+    }
+
+    .nav-list {
+        font-size: 0.72rem !important;
+        padding: 4px 6px !important;
+        white-space: nowrap !important;
+    }
+
+    #header .navbar-list .sub-menu {
+        width: 160px !important;
+    }
+    .slogan{
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 991px) {
+    .box-foods {
+        flex-wrap: wrap; /* بازگشت به حالت ردیفی */
+        overflow-x: hidden;
+        justify-content: flex-start;
+    }
+
+    .box-food {
+        /* همان دو ستونه مد نظر شما */
+        flex: 0 0 calc(50% - 8px);
+        width: calc(50% - 8px);
+        height: 320px;
+    }
+}
+
+.box-food .box-img { height: 200px; width: 100%; }
+.box-food .box-img img { width: 100%; height: 100%; object-fit: cover; }
+
+/* تنظیمات نهایی برای موبایل و تبلت (اجبار به دو ستونه بودن) */
+@media (max-width: 991px) {
+    .box-foods {
+        display: flex !important;
+        flex-wrap: wrap !important; /* اجبار به شکستن خط */
+        justify-content: flex-start !important; /* شروع از سمت راست */
+        overflow-x: hidden !important; /* غیرفعال کردن اسکرول افقی */
+        gap: 10px !important; /* فاصله بین کارت‌ها */
+        padding: 10px !important;
+        width: 100% !important;
+    }
+
+    .box-food {
+        /* محاسبه دقیق عرض برای جا شدن دو کارت در یک ردیف */
+        width: calc(50% - 5px) !important; 
+        flex: 0 0 calc(50% - 5px) !important;
+        margin-bottom: 5px !important;
+        box-sizing: border-box !important;
+    }
+
+    .box-food .box-img {
+        height: 160px !important; /* ارتفاع ثابت عکس در موبایل */
+    }
+}
+
+
+@media (min-width: 992px) {
+    .box-foods {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        /* جادوی این بخش: اگر جا شد وسط بمان، اگر جا نشد از راست شروع کن */
+        justify-content: center; 
+        
+        overflow-x: auto !important;
+        gap: 20px !important;
+        width: 100% !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+        direction: rtl !important; /* جهت فارسی */
+        
+        /* برای حذف نوار اسکرول زشت */
+        scrollbar-width: none;
+    }
+
+    .box-foods::-webkit-scrollbar {
+        display: none;
+    }
+
+    .box-food {
+        /* عرض ثابت برای کارت ها در دسکتاپ */
+        flex: 0 0 300px !important;
+        
+        /* این خط باعث می شود در زمان اسکرول، کارت ها به هم نچسبند */
+        margin-left: 10px; 
+        margin-right: 10px;
+    }
+
+    /* ترفند نهایی برای اینکه وقتی آیتم ها زیاد شدند از راست شروع شود */
+    .box-foods::after, .box-foods::before {
+        content: '';
+        flex: 1; /* این ها مثل فنر عمل میکنند */
+    }
+}
+
+/* تنظیمات موبایل (همان دو ستونه بدون تغییر) */
+@media (max-width: 991px) {
+    .box-foods {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-start !important;
+        overflow-x: hidden !important;
+        gap: 10px !important;
+        padding: 10px !important;
+    }
+    .box-food {
+        width: calc(50% - 5px) !important;
+        flex: 0 0 calc(50% - 5px) !important;
+        height: 320px !important;
+    }
+}
+/* استایل کارت‌ها در دسکتاپ */
+@media (min-width: 992px) {
+    .box-foods {
+        flex-wrap: nowrap !important; /* چیدمان در یک خط */
+        /* این خط باعث می‌شود اگر تعداد کم بود وسط بمانند و اگر زیاد شد از راست شروع شود */
+        justify-content: safe center; 
+    }
+
+    .box-food {
+        flex: 0 0 280px !important; /* عرض ثابت برای هر کارت */
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        /* جلوگیری از فشرده شدن کارت‌ها */
+        min-width: 280px !important;
+    }
+}
+
+/* استایل کارت‌ها در موبایل (دو ستونه) */
+@media (max-width: 991px) {
+    .box-foods {
+        flex-wrap: wrap !important; /* شکستن خط برای دو ستونه شدن */
+        justify-content: center !important;
+        overflow-x: hidden !important; /* غیرفعال کردن اسکرول افقی در موبایل */
+    }
+
+    .box-food {
+        /* محاسبه عرض برای دو ستونه شدن دقیق با احتساب Gap */
+        flex: 0 0 calc(50% - 20px) !important;
+        width: calc(50% - 20px) !important;
+        min-width: calc(50% - 20px) !important;
+        height: 320px !important;
+        margin-bottom: 10px;
+    }
+}
+
+
+.slogan { /* فرض بر این است که کلاس یا المان شعار شما این است، اگر نام دیگری دارد جایگزین کنید */
+    white-space: nowrap !important; /* اجبار به ماندن در یک خط */
+    text-overflow: ellipsis; /* اگر خیلی بزرگ بود ته آن را سه نقطه بگذارد (اختیاری) */
+    text-align: center;
+}
+
+/* تنظیمات اختصاصی برای تبلت */
+@media (max-width: 991px) {
+    .slogan {
+        font-size: 1.2rem !important; /* کوچک کردن فونت برای جا شدن */
+        margin: 5px 0;
+    }
+}
+
+/* تنظیمات اختصاصی برای موبایل (بسیار مهم) */
+@media (max-width: 576px) {
+    .slogan {
+        font-size: 0.9rem !important; /* فونت کوچک‌تر برای موبایل‌های باریک */
+        letter-spacing: 0px !important; /* کم کردن فاصله بین حروف */
+        width: 100%;
+        display: block;
+        margin-left: 22px;
+    }
+}
+
+
+@media (max-width: 628px){
+    .box-price{
+        margin-top: 200px;
+    }
+    .ab-price{
+        margin-top: 220px;
+    }
+    .sub-menu{
+        margin-right: -50px;
+        margin-top: 10px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .contact {
+        display: flex !important;
+        position: fixed;
+        z-index: 9999;
+    }
+}
